@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Wrapper from "../assets/wrappers/RegisterPage";
-import { Logo } from "../components";
+import { Logo, FormRow } from "../components";
 const initialState = {
   name: "",
   email: "",
@@ -24,16 +24,27 @@ function Register() {
         <Logo />
         <h3>Login</h3>
         {/* name field */}
-        <label htmlFor="name" className="form-label">
-          name
-        </label>
-        <input
+        <FormRow
           type="text"
           name="name"
           value={values.name}
-          onChange={handleChage}
-          className="form-input"
+          handleChage={handleChage}
         />
+        {/* email field */}
+        <FormRow
+          type="email"
+          name="email"
+          value={values.email}
+          handleChage={handleChage}
+        />
+        {/* password field */}
+        <FormRow
+          type="password"
+          name="password"
+          value={values.password}
+          handleChage={handleChage}
+        />
+
         <button type="submit" className="btn btn-block">
           submit
         </button>
