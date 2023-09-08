@@ -66,8 +66,8 @@ function Register() {
           value={values.password}
           handleChage={handleChage}
         />
-        <button type="submit" className="btn btn-block">
-          submit
+        <button type="submit" className="btn btn-block" disabled={isLoading}>
+          {isLoading ? "loading..." : "submit"}
         </button>
         <p>
           {values.isMember ? "Not a member yet?" : "Already a member?"}
