@@ -3,7 +3,7 @@ import { FormRow } from "../../components";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-
+import { updateUser } from "../../features/user/userSlice";
 function Profile() {
   const { isLoading, user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
@@ -21,6 +21,7 @@ function Profile() {
       toast.error("please foll out all fields");
       return;
     }
+    dispatch(updateUser(userData));
   };
 
   const handleChange = (e) => {
@@ -38,7 +39,7 @@ function Profile() {
             type="text"
             name="name"
             value={userData.name}
-            handleChage={handleChange}
+            handleChange={handleChange}
           />
           <FormRow
             type="text"
@@ -59,7 +60,7 @@ function Profile() {
             value={userData.location}
             handleChange={handleChange}
           />
-          <button className="btn btn-clock" type="submit" disabled={isLoading}>
+          <button className="btn btn-block" type="submit" disabled={isLoading}>
             {isLoading ? "Please Wait..." : "save changes"}
           </button>
         </div>
