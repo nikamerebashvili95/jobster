@@ -18,7 +18,7 @@ function Register() {
   const { user, isLoading } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleChage = (e) => {
+  const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setValues({ ...values, [name]: value });
@@ -57,7 +57,7 @@ function Register() {
             type="text"
             name="name"
             value={values.name}
-            handleChage={handleChage}
+            handleChange={handleChange}
           />
         )}
         {/* email field */}
@@ -66,14 +66,14 @@ function Register() {
           type="email"
           name="email"
           value={values.email}
-          handleChage={handleChage}
+          handleChange={handleChange}
         />
         {/* password field */}
         <FormRow
           type="password"
           name="password"
           value={values.password}
-          handleChage={handleChage}
+          handleChange={handleChange}
         />
         <button type="submit" className="btn btn-block" disabled={isLoading}>
           {isLoading ? "loading..." : "submit"}
