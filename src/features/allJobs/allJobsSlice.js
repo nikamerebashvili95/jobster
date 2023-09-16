@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import customFetch from "../../utils/axios";
+import customFetch, { checkForUnauthorizedResponse } from "../../utils/axios";
 
 const initialFiltersState = {
   search: "",
@@ -54,6 +54,15 @@ export const showStats = createAsyncThunk(
     }
   }
 );
+
+export const showStatsThunk = async (_, thunkAPI) => {
+  try {
+    const resp = await customFetch.get("/jobs/stats");
+    return resp.data;
+  } catch (error) {
+    return checkForUnauthorizedResponse(error, thunkAPI);
+  }
+};
 
 const allJobsSlice = createSlice({
   name: "allJobs",
