@@ -53,6 +53,7 @@ function AddJob() {
     if (!isEditing) {
       dispatch(handleChange({ name: "jobLocation", value: user.location }));
     }
+    // eslint-disable-next-line
   }, []);
 
   return (
